@@ -6,10 +6,10 @@ class Card extends React.Component {
     const {
       cardName,
       cardDescription,
-      cardAttr2,
       cardAttr1,
-      cardImage,
+      cardAttr2,
       cardAttr3,
+      cardImage,
       cardTrunfo,
       cardRare,
     } = this.props;
