@@ -17,7 +17,12 @@ class Card extends React.Component {
     return (
       <div data-testid="name-card">
         <p>{ cardName }</p>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+        <img
+          className="img-size"
+          src={ cardImage }
+          alt={ cardName }
+          data-testid="image-card"
+        />
         <p data-testid="description-card">{ cardDescription }</p>
         <p data-testid="attr1-card">{ cardAttr1 }</p>
         <p data-testid="attr2-card">{ cardAttr2 }</p>
