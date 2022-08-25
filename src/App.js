@@ -10,7 +10,7 @@ class App extends React.Component {
     cardAttr2: 0,
     cardAttr3: 0,
     cardImage: '',
-    cardRare: '',
+    cardRare: 'normal',
     cardTrunfo: false,
     isSaveButtonDisabled: true,
   };
@@ -31,6 +31,18 @@ class App extends React.Component {
       + Number(cardAttr2)
       + Number(cardAttr3)
       > Number('210') });
+    });
+  };
+
+  onSaveButtonClick = () => {
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardRare: 'normal',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
     });
   };
 
@@ -65,6 +77,7 @@ class App extends React.Component {
               cardTrunfo={ cardTrunfo }
               isSaveButtonDisabled={ isSaveButtonDisabled }
               onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
             />
           </div>
           <div className="card-container">
