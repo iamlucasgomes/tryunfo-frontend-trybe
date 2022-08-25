@@ -18,16 +18,26 @@ class App extends React.Component {
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
+
+    this.setState({
+      [name]: value,
+    });
+
     const checkFields = value.length === 0
       ? this.setState({ isSaveButtonDisabled: true })
       : this.setState({ isSaveButtonDisabled: false });
     const checkEmptyFields = () => checkFields;
     checkEmptyFields();
 
-    this.setState({
-      [name]: value,
-
-    });
+    // const checkAttr = () => {
+    //   const { cardAttr1 } = this.state;
+    //   if (cardAttr1 <= Number('90') && cardAttr1 > Number('0')) {
+    //     this.setState({ isSaveButtonDisabled: true });
+    //   } else {
+    //     this.setState({ isSaveButtonDisabled: false });
+    //   }
+    // };
+    // checkAttr();
   };
 
   render() {
