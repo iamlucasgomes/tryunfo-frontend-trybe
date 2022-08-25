@@ -25,8 +25,8 @@ class App extends React.Component {
       const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
       this.setState({
         isSaveButtonDisabled: (value.length === 0)
-      || (value >= Number('90')
-      || value <= Number('0'))
+      || value >= Number('90')
+      || value <= Number('0')
       || Number(cardAttr1)
       + Number(cardAttr2)
       + Number(cardAttr3)
