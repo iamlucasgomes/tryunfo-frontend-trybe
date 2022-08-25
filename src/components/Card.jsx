@@ -43,5 +43,4 @@ Card.propTypes = {
   cardImage: PropTypes.string,
   cardRare: PropTypes.string,
 }.isRequired;
-
 export default Card;

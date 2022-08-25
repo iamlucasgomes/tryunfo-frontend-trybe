@@ -6,9 +6,9 @@ class App extends React.Component {
   state = {
     cardName: '',
     cardDescription: '',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
+    cardAttr1: 0,
+    cardAttr2: 0,
+    cardAttr3: 0,
     cardImage: '',
     cardRare: '',
     cardTrunfo: false,
@@ -21,23 +21,17 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
+    }, () => {
+      const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+      this.setState({
+        isSaveButtonDisabled: (value.length === 0)
+      || (value >= Number('90')
+      || value <= Number('0'))
+      || Number(cardAttr1)
+      + Number(cardAttr2)
+      + Number(cardAttr3)
+      > Number('210') });
     });
-
-    const checkFields = value.length === 0
-      ? this.setState({ isSaveButtonDisabled: true })
-      : this.setState({ isSaveButtonDisabled: false });
-    const checkEmptyFields = () => checkFields;
-    checkEmptyFields();
-
-    // const checkAttr = () => {
-    //   const { cardAttr1 } = this.state;
-    //   if (cardAttr1 <= Number('90') && cardAttr1 > Number('0')) {
-    //     this.setState({ isSaveButtonDisabled: true });
-    //   } else {
-    //     this.setState({ isSaveButtonDisabled: false });
-    //   }
-    // };
-    // checkAttr();
   };
 
   render() {
@@ -71,7 +65,6 @@ class App extends React.Component {
               cardTrunfo={ cardTrunfo }
               isSaveButtonDisabled={ isSaveButtonDisabled }
               onInputChange={ this.onInputChange }
-              onDisabled={ this.onDisabled }
             />
           </div>
           <div className="card-container">
