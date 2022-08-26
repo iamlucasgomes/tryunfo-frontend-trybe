@@ -5,7 +5,7 @@ import Card from './Card';
 class Deck extends React.Component {
   removeCard = ({ target }) => {
     const { name } = target;
-    console.log(this.state[name]);
+    console.log(name);
   };
 
   render() {
