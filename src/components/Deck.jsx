@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 import Card from './Card';
 
 class Deck extends React.Component {
-  removeCard = ({ target }) => {
-    const { name } = target;
-    console.log(name);
-  };
-
   render() {
     const {
       cards,
+      removeCard,
     } = this.props;
-
+    console.log(this.props);
     return (
       <div>
         {
@@ -38,10 +34,11 @@ class Deck extends React.Component {
                 cardTrunfo={ Trunfo }
               />
               <input
+                key={ `Button ${Name}` }
                 type="button"
                 value="Excluir"
                 data-testid="delete-button"
-                onClick={ this.removeCard }
+                onClick={ removeCard }
               />
             </>
           ))

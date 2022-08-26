@@ -76,6 +76,13 @@ class App extends React.Component {
     });
   };
 
+  removeCard = (index) => {
+    const { cards } = this.state;
+    const arrCards = cards.slice();
+    arrCards.splice(index, 1);
+    this.setState({ cards: arrCards });
+  };
+
   render() {
     const {
       cards,
@@ -128,6 +135,7 @@ class App extends React.Component {
         <div>
           <Deck
             cards={ cards }
+            removeCard={ this.removeCard }
           />
         </div>
       </>
