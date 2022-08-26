@@ -10,6 +10,10 @@ class Deck extends React.Component {
     } = this.props;
     return (
       <div>
+        <label htmlFor="name-filter">
+          Filtros de busca
+          <input type="text" data-testid="name-filter" />
+        </label>
         {
           cards.map(({ Name,
             Description,

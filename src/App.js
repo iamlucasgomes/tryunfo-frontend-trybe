@@ -84,6 +84,11 @@ class App extends React.Component {
       cards: arrCards });
   };
 
+  filterName = () => {
+    const { cards } = this.state;
+    console.log(cards);
+  };
+
   render() {
     const {
       cards,
@@ -137,6 +142,7 @@ class App extends React.Component {
           <Deck
             cards={ cards }
             removeCard={ this.removeCard }
+            filterName={ this.filterName }
           />
         </div>
       </>
