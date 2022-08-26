@@ -116,7 +116,7 @@ class App extends React.Component {
             <Card
               cardName={ cardName }
               cardDescription={ cardDescription }
-              cardAttr={ cardAttr1 }
+              cardAttr1={ cardAttr1 }
               cardAttr2={ cardAttr2 }
               cardAttr3={ cardAttr3 }
               cardImage={ cardImage }
