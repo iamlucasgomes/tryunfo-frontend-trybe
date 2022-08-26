@@ -8,7 +8,6 @@ class Deck extends React.Component {
       cards,
       removeCard,
     } = this.props;
-    console.log(this.props);
     return (
       <div>
         {

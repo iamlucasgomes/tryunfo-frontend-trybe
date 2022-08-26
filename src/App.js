@@ -71,7 +71,7 @@ class App extends React.Component {
       cardAttr3: 0,
     }, () => {
       this.setState({
-        hasTrunfo: cards.map(({ Trunfo }) => Trunfo),
+        hasTrunfo: cards.some(({ Trunfo }) => Trunfo),
       });
     });
   };
@@ -80,7 +80,8 @@ class App extends React.Component {
     const { cards } = this.state;
     const arrCards = cards.slice();
     arrCards.splice(index, 1);
-    this.setState({ cards: arrCards });
+    this.setState({ hasTrunfo: arrCards.some(({ Trunfo }) => Trunfo),
+      cards: arrCards });
   };
 
   render() {
