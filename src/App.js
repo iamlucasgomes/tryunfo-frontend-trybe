@@ -7,6 +7,7 @@ class App extends React.Component {
   state = {
     cards: [],
     nameFilter: '',
+    rarityFilter: 'todas',
     cardName: '',
     cardDescription: '',
     cardAttr1: 0,
@@ -90,10 +91,16 @@ class App extends React.Component {
     this.setState({ nameFilter: value });
   };
 
+  filterRarity = ({ target }) => {
+    const { value } = target;
+    this.setState({ rarityFilter: value });
+  };
+
   render() {
     const {
       cards,
       nameFilter,
+      rarityFilter,
       cardName,
       cardDescription,
       cardAttr1,
@@ -146,6 +153,8 @@ class App extends React.Component {
             removeCard={ this.removeCard }
             filterName={ this.filterName }
             nameFilter={ nameFilter }
+            filterRarity={ this.filterRarity }
+            rarityFilter={ rarityFilter }
           />
         </div>
       </>
