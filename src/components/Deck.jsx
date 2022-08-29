@@ -7,45 +7,82 @@ class Deck extends React.Component {
     const {
       cards,
       removeCard,
+      filterName,
+      nameFilter,
     } = this.props;
+
+    const namesFiltered = cards
+      .filter(({ Name }) => Name.includes(nameFilter))
+      .map(({ Name,
+        Description,
+        Attr1,
+        Attr2,
+        Attr3,
+        Image,
+        Trunfo,
+        Rare,
+      }) => (
+        <>
+          <Card
+            key={ Name }
+            cardName={ Name }
+            cardDescription={ Description }
+            cardAttr1={ Attr1 }
+            cardAttr2={ Attr2 }
+            cardAttr3={ Attr3 }
+            cardImage={ Image }
+            cardRare={ Rare }
+            cardTrunfo={ Trunfo }
+          />
+          <input
+            key={ `Button:${Name}` }
+            type="button"
+            value="Excluir"
+            data-testid="delete-button"
+            onClick={ removeCard }
+          />
+        </>
+      ));
+
+    const cardsUnfiltered = cards
+      .map(({ Name,
+        Description,
+        Attr1,
+        Attr2,
+        Attr3,
+        Image,
+        Trunfo,
+        Rare,
+      }) => (
+        <>
+          <Card
+            key={ 'card: '.concat(Name) }
+            cardName={ Name }
+            cardDescription={ Description }
+            cardAttr1={ Attr1 }
+            cardAttr2={ Attr2 }
+            cardAttr3={ Attr3 }
+            cardImage={ Image }
+            cardRare={ Rare }
+            cardTrunfo={ Trunfo }
+          />
+          <input
+            key={ 'Button: '.concat(Name) }
+            type="button"
+            value="Excluir"
+            data-testid="delete-button"
+            onClick={ removeCard }
+          />
+        </>
+      ));
+
     return (
       <div>
         <label htmlFor="name-filter">
           Filtros de busca
-          <input type="text" data-testid="name-filter" />
+          <input onChange={ filterName } type="text" data-testid="name-filter" />
         </label>
-        {
-          cards.map(({ Name,
-            Description,
-            Attr1,
-            Attr2,
-            Attr3,
-            Image,
-            Trunfo,
-            Rare,
-          }) => (
-            <>
-              <Card
-                key={ Name }
-                cardName={ Name }
-                cardDescription={ Description }
-                cardAttr1={ Attr1 }
-                cardAttr2={ Attr2 }
-                cardAttr3={ Attr3 }
-                cardImage={ Image }
-                cardRare={ Rare }
-                cardTrunfo={ Trunfo }
-              />
-              <input
-                key={ `Button ${Name}` }
-                type="button"
-                value="Excluir"
-                data-testid="delete-button"
-                onClick={ removeCard }
-              />
-            </>
-          ))
-        }
+        { nameFilter === '' ? cardsUnfiltered : namesFiltered}
       </div>
     );
   }

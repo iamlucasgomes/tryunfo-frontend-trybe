@@ -6,6 +6,7 @@ import Deck from './components/Deck';
 class App extends React.Component {
   state = {
     cards: [],
+    nameFilter: '',
     cardName: '',
     cardDescription: '',
     cardAttr1: 0,
@@ -84,14 +85,15 @@ class App extends React.Component {
       cards: arrCards });
   };
 
-  filterName = () => {
-    const { cards } = this.state;
-    console.log(cards);
+  filterName = ({ target }) => {
+    const { value } = target;
+    this.setState({ nameFilter: value });
   };
 
   render() {
     const {
       cards,
+      nameFilter,
       cardName,
       cardDescription,
       cardAttr1,
@@ -143,6 +145,7 @@ class App extends React.Component {
             cards={ cards }
             removeCard={ this.removeCard }
             filterName={ this.filterName }
+            nameFilter={ nameFilter }
           />
         </div>
       </>
