@@ -8,6 +8,7 @@ class App extends React.Component {
     cards: [],
     nameFilter: '',
     rarityFilter: 'todas',
+    trunfoFilter: false,
     cardName: '',
     cardDescription: '',
     cardAttr1: 0,
@@ -82,8 +83,10 @@ class App extends React.Component {
     const { cards } = this.state;
     const arrCards = cards.slice();
     arrCards.splice(index, 1);
-    this.setState({ hasTrunfo: arrCards.some(({ Trunfo }) => Trunfo),
-      cards: arrCards });
+    this.setState({
+      hasTrunfo: arrCards.some(({ Trunfo }) => Trunfo),
+      cards: arrCards,
+    });
   };
 
   filterName = ({ target }) => {
@@ -94,6 +97,12 @@ class App extends React.Component {
   filterRarity = ({ target }) => {
     const { value } = target;
     this.setState({ rarityFilter: value });
+  };
+
+  filterTrunfo = () => {
+    this.setState((prevState) => ({
+      trunfoFilter: !prevState.trunfoFilter,
+    }));
   };
 
   render() {
@@ -111,6 +120,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      trunfoFilter,
     } = this.state;
     return (
       <>
@@ -155,6 +165,8 @@ class App extends React.Component {
             nameFilter={ nameFilter }
             filterRarity={ this.filterRarity }
             rarityFilter={ rarityFilter }
+            filterTrunfo={ this.filterTrunfo }
+            trunfoFilter={ trunfoFilter }
           />
         </div>
       </>

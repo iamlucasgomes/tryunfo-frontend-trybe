@@ -4,6 +4,7 @@ import Card from './Card';
 
 class Deck extends React.Component {
   render() {
+    let ItsDeactivated = false;
     const {
       cards,
       removeCard,
@@ -11,6 +12,8 @@ class Deck extends React.Component {
       nameFilter,
       rarityFilter,
       filterRarity,
+      trunfoFilter,
+      filterTrunfo,
     } = this.props;
 
     const cardFunc = ({ Name,
@@ -46,6 +49,12 @@ class Deck extends React.Component {
 
     let filteredCards = cards;
 
+    if (trunfoFilter === true) {
+      ItsDeactivated = true;
+      filteredCards = filteredCards
+        .filter(({ Trunfo }) => Trunfo === true);
+    }
+
     if (nameFilter !== '') {
       filteredCards = filteredCards.filter(({ Name }) => Name
         .toLowerCase().includes(nameFilter.toLowerCase()));
@@ -66,15 +75,30 @@ class Deck extends React.Component {
             onChange={ filterName }
             type="text"
             data-testid="name-filter"
+            disabled={ ItsDeactivated }
           />
         </label>
         <label htmlFor="rare-filter">
-          <select name="rarityFilter" data-testid="rare-filter" onChange={ filterRarity }>
+          <select
+            name="rarityFilter"
+            data-testid="rare-filter"
+            onChange={ filterRarity }
+            disabled={ ItsDeactivated }
+          >
             <option value="todas">todas</option>
             <option value="normal">normal</option>
             <option value="raro">raro</option>
             <option value="muito raro">muito raro</option>
           </select>
+        </label>
+        <label htmlFor="trunfo-filter">
+          <input
+            name="Super Trunfo"
+            type="checkbox"
+            data-testid="trunfo-filter"
+            onClick={ filterTrunfo }
+          />
+          Super Trunfo
         </label>
         { cardList }
 
