@@ -44,6 +44,19 @@ class Deck extends React.Component {
       </>
     );
 
+    let filteredCards = cards;
+
+    if (nameFilter !== '') {
+      filteredCards = filteredCards.filter(({ Name }) => Name
+        .toLowerCase().includes(nameFilter.toLowerCase()));
+    }
+
+    if (rarityFilter !== 'todas') {
+      filteredCards = filteredCards.filter(({ Rare }) => Rare === rarityFilter);
+    }
+
+    const cardList = filteredCards.map(cardFunc);
+
     return (
       <div>
         <label htmlFor="name-filter">
@@ -63,11 +76,7 @@ class Deck extends React.Component {
             <option value="muito raro">muito raro</option>
           </select>
         </label>
-        { (nameFilter === '' && rarityFilter === 'todas') ? cards
-          .map(cardFunc) : cards
-          .filter(({ Name }) => Name.includes(nameFilter))
-          .filter(({ Rare }) => Rare === rarityFilter)
-          .map(cardFunc)}
+        { cardList }
 
       </div>
     );
