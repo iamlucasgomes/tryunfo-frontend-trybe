@@ -1,6 +1,14 @@
+/* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import './index.css';
+import './style/DeckSection.css';
+import './style/SectionCardAdd.css';
+import './style/Form.css';
+import './style/Filter.css';
+import './style/Card.css';
+import './style/Checkbox.css';
 import Deck from './components/Deck';
 
 class App extends React.Component {
@@ -28,21 +36,33 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, () => {
-      const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+      const {
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardName,
+        cardDescription,
+        cardImage,
+        cardRare,
+      } = this.state;
+      const maxTotal = 210;
+      const maxEach = 90;
+      const firstCondition = cardName && cardDescription && cardImage && cardRare;
+      const secondCondition = parseInt(cardAttr1, 10) + parseInt(cardAttr2, 10)
+          + parseInt(cardAttr3, 10) <= maxTotal;
+      const thirdCondition = cardAttr1 <= maxEach
+      && cardAttr2 <= maxEach && cardAttr3 <= maxEach;
+      const fourthCondition = cardAttr1 >= 0 && cardAttr2 >= 0 && cardAttr3 >= 0;
       this.setState({
-        isSaveButtonDisabled: (value.length === 0)
-          || value >= Number('90')
-          || value <= Number('0')
-          || Number(cardAttr1)
-          + Number(cardAttr2)
-          + Number(cardAttr3)
-          > Number('210'),
+        isSaveButtonDisabled: !(firstCondition && secondCondition
+          && thirdCondition && fourthCondition),
         cardTrunfo: target.checked,
       });
     });
   };
 
-  onSaveButtonClick = () => {
+  onSaveButtonClick = (e) => {
+    e.preventDefault();
     const { cards,
       cardName,
       cardImage,
@@ -75,6 +95,7 @@ class App extends React.Component {
     }, () => {
       this.setState({
         hasTrunfo: cards.some(({ Trunfo }) => Trunfo),
+        isSaveButtonDisabled: true,
       });
     });
   };
@@ -124,51 +145,61 @@ class App extends React.Component {
     } = this.state;
     return (
       <>
-        <h1>
+        <h1 id="title">
           Tryunfo
         </h1>
-        <section className="main-container">
-          <div className="form-container">
-            <Form
-              cardName={ cardName }
-              cardDescription={ cardDescription }
-              cardAttr1={ cardAttr1 }
-              cardAttr2={ cardAttr2 }
-              cardAttr3={ cardAttr3 }
-              cardImage={ cardImage }
-              cardRare={ cardRare }
-              cardTrunfo={ cardTrunfo }
-              hasTrunfo={ hasTrunfo }
-              isSaveButtonDisabled={ isSaveButtonDisabled }
-              onInputChange={ this.onInputChange }
-              onSaveButtonClick={ this.onSaveButtonClick }
-            />
-          </div>
-          <div className="card-container">
-            <Card
-              cardName={ cardName }
-              cardDescription={ cardDescription }
-              cardAttr1={ cardAttr1 }
-              cardAttr2={ cardAttr2 }
-              cardAttr3={ cardAttr3 }
-              cardImage={ cardImage }
-              cardRare={ cardRare }
-              cardTrunfo={ cardTrunfo }
+        <section className="new-card">
+          <section className="main-container">
+            <section className="card-add">
+              <div className="form-container">
+                <h2>Adicionar nova carta</h2>
+                <Form
+                  cardName={ cardName }
+                  cardDescription={ cardDescription }
+                  cardAttr1={ cardAttr1 }
+                  cardAttr2={ cardAttr2 }
+                  cardAttr3={ cardAttr3 }
+                  cardImage={ cardImage }
+                  cardRare={ cardRare }
+                  cardTrunfo={ cardTrunfo }
+                  hasTrunfo={ hasTrunfo }
+                  isSaveButtonDisabled={ isSaveButtonDisabled }
+                  onInputChange={ this.onInputChange }
+                  onSaveButtonClick={ this.onSaveButtonClick }
+                />
+              </div>
+            </section>
+            <section className="card-preview">
+              <div className="card-container">
+                <h2>Pré-visualização</h2>
+                <Card
+                  cardName={ cardName }
+                  cardDescription={ cardDescription }
+                  cardAttr1={ cardAttr1 }
+                  cardAttr2={ cardAttr2 }
+                  cardAttr3={ cardAttr3 }
+                  cardImage={ cardImage }
+                  cardRare={ cardRare }
+                  cardTrunfo={ cardTrunfo }
+                />
+              </div>
+            </section>
+          </section>
+        </section>
+        <section className="saved-cards">
+          <div>
+            <Deck
+              cards={ cards }
+              removeCard={ this.removeCard }
+              filterName={ this.filterName }
+              nameFilter={ nameFilter }
+              filterRarity={ this.filterRarity }
+              rarityFilter={ rarityFilter }
+              filterTrunfo={ this.filterTrunfo }
+              trunfoFilter={ trunfoFilter }
             />
           </div>
         </section>
-        <div>
-          <Deck
-            cards={ cards }
-            removeCard={ this.removeCard }
-            filterName={ this.filterName }
-            nameFilter={ nameFilter }
-            filterRarity={ this.filterRarity }
-            rarityFilter={ rarityFilter }
-            filterTrunfo={ this.filterTrunfo }
-            trunfoFilter={ trunfoFilter }
-          />
-        </div>
       </>
     );
   }

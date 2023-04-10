@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
@@ -25,7 +26,7 @@ class Deck extends React.Component {
       Trunfo,
       Rare,
     }) => (
-      <>
+      <div>
         <Card
           key={ 'card: '.concat(Name) }
           cardName={ Name }
@@ -36,15 +37,18 @@ class Deck extends React.Component {
           cardImage={ Image }
           cardRare={ Rare }
           cardTrunfo={ Trunfo }
+          removeCard={ removeCard }
         />
-        <input
+        <button
           key={ 'Button: '.concat(Name) }
           type="button"
           value="Excluir"
           data-testid="delete-button"
           onClick={ removeCard }
-        />
-      </>
+        >
+          Excluir
+        </button>
+      </div>
     );
 
     let filteredCards = cards;
@@ -67,42 +71,57 @@ class Deck extends React.Component {
     const cardList = filteredCards.map(cardFunc);
 
     return (
-      <div>
-        <label htmlFor="name-filter">
-          Filtros de busca
-          <input
-            name="nameFilter"
-            onChange={ filterName }
-            type="text"
-            data-testid="name-filter"
-            disabled={ ItsDeactivated }
-          />
-        </label>
-        <label htmlFor="rare-filter">
-          <select
-            name="rarityFilter"
-            data-testid="rare-filter"
-            onChange={ filterRarity }
-            disabled={ ItsDeactivated }
-          >
-            <option value="todas">todas</option>
-            <option value="normal">normal</option>
-            <option value="raro">raro</option>
-            <option value="muito raro">muito raro</option>
-          </select>
-        </label>
-        <label htmlFor="trunfo-filter">
-          <input
-            name="Super Trunfo"
-            type="checkbox"
-            data-testid="trunfo-filter"
-            onClick={ filterTrunfo }
-          />
-          Super Trunfo
-        </label>
-        { cardList }
-
-      </div>
+      <section className="saved-cards">
+        <section className="card-filter">
+          <div className="filter-container">
+            <div className="form-input typedName">
+              <label htmlFor="name-filter">
+                <h2>Todas as cartas</h2>
+                <h3>Filtros de busca</h3>
+                <input
+                  name="nameFilter"
+                  id="typedName"
+                  onChange={ filterName }
+                  type="text"
+                  data-testid="name-filter"
+                  disabled={ ItsDeactivated }
+                />
+              </label>
+            </div>
+            <div className="form-select selectedRare">
+              <label htmlFor="rare-filter">
+                <select
+                  name="rarityFilter"
+                  id="selectedRare"
+                  data-testid="rare-filter"
+                  onChange={ filterRarity }
+                  disabled={ ItsDeactivated }
+                >
+                  <option value="todas">todas</option>
+                  <option value="normal">normal</option>
+                  <option value="raro">raro</option>
+                  <option value="muito raro">muito raro</option>
+                </select>
+              </label>
+            </div>
+            <div className="form-check checkedTrunfo">
+              <label htmlFor="trunfo-filter">
+                <input
+                  id="checkedTrunfo"
+                  name="Super Trunfo"
+                  type="checkbox"
+                  data-testid="trunfo-filter"
+                  onClick={ filterTrunfo }
+                />
+                Super Trunfo
+              </label>
+            </div>
+          </div>
+        </section>
+        <section className="card-list">
+          { cardList }
+        </section>
+      </section>
     );
   }
 }

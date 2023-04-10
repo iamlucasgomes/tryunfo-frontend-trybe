@@ -1,0 +1,101 @@
+form {
+  padding-bottom: 50px;
+  width: 22vw;
+}
+
+.form-input, .form-select, .form-check {
+  display: flex;
+  margin: 22px 0;
+}
+
+.form-input label, .form-select label {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 5px 10px 8px 0;
+}
+
+.form-check label {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 5px 0 5px 10px;
+
+}
+
+.name, .description, .rare {
+  flex-direction: column;
+}
+
+.attr1, .attr2, .attr3, .image, .trunfo {
+  align-items: center;
+}
+
+.name input {
+  border-bottom: 1px solid black;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  font-size: 14px;
+  height: 37px;
+  padding: 3px 5px 0;
+}
+
+.description textarea {
+  border-bottom: 1px solid black;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  font-size: 14px;
+  height: 80px;
+  padding: 10px 5px;
+}
+
+.attr1 label, .attr2 label, .attr3 label {
+  width: 50px;
+}
+
+.attr1 input, .attr2 input, .attr3 input, .image input {
+  border: 1px solid #29313d;
+  border-radius: 2px;
+  flex: 1;
+  height: 37px;
+  padding: 3px 5px 0;
+}
+
+.rare select {
+  border-bottom: 1px solid black;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  font-size: 14px;
+  height: 40px;
+  padding: 3px 5px 0;
+}
+
+.trunfo input {
+  border: 1px solid black;
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+}
+
+.trunfo input:hover {
+  cursor: pointer;
+}
+
+form button {
+  background-color: #3761a8;
+  border-radius: 2px;
+  border-width: 0;
+  color: white;
+  font-size: 16px;
+  padding: 10px 32px;
+}
+
+form button:disabled {
+  background-color: lightgray;
+}
+
+form button:hover:not( [ disabled ] ) {
+  background-color: #3760a8c2;
+  cursor: pointer;
+}

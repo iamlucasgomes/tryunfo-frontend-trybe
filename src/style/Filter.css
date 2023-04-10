@@ -1,0 +1,37 @@
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  width: 22vw;
+}
+
+.typedName, .selectedRare {
+  margin-bottom: 0;
+}
+
+.typedName input {
+  border: 1px solid #29313d;
+  border-radius: 6px;
+  flex: 1;
+  height: 37px;
+  padding: 3px 5px 0;
+}
+
+.selectedRare select {
+  border: 1px solid #29313d;
+  border-radius: 6px;
+  flex: 1;
+  width: 183px;
+  height: 37px;
+  padding: 3px 5px 0;
+}
+
+.checkedTrunfo input {
+  border: 1px solid black;
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+}
+
+.checkedTrunfo input:hover {
+  cursor: pointer;
+}

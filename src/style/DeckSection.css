@@ -1,0 +1,51 @@
+.saved-cards {
+  display: flex;
+  height: 100%;
+}
+
+.card-filter, .card-list {
+  align-items: center;
+  background-color: #fafafa;
+  display: flex;
+}
+
+.card-filter {
+  flex-direction: column;
+  width: 33vw;
+}
+
+.card-list {
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 50px;
+  width: 67vw;
+}
+
+.card-filter h2 {
+  margin-bottom: 25px;
+}
+
+.card-filter p {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card-list > div {
+  margin: 30px;
+  text-align: center;
+}
+
+.card-list button {
+  background-color: white;
+  border: 3px solid #3761a8;
+  border-radius: 2px;
+  color: #3761a8;
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 10px 32px 8px;
+}
+
+.card-list button:hover {
+  background-color: #3760a817;
+  cursor: pointer;
+}

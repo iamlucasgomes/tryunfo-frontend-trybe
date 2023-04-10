@@ -1,0 +1,137 @@
+.outer-bound {
+  background-color: white;
+  border: 10px solid white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+  height: 549px;
+  width: 310px;
+}
+
+.middle-bound {
+  background-color: #ac0010;
+  border: 15px solid #ac0010;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.inner-bound {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.inner-bound h3 {
+  background-color: #ac0010;
+  border-radius: 10px 10px 0 0;
+  font-size: 28px;
+  font-weight: 700;
+  height: 40px;
+  line-height: 42px;
+  padding: 0 10px;
+  text-align: right;
+  width: 100%;
+}
+
+.img-bound {
+  background-color: #ac0010;
+  height: 260px;
+  line-height: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.img-bound img {
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+  height: 260px;
+  padding: 50px;
+}
+
+.inner-bound p {
+  font-size: 10px;
+  height: 30px;
+  margin: 10px 5px;
+}
+
+.details {
+  background-color: #ac0010;
+  border-radius: 0 0 10px 10px;
+  flex: 1;
+  padding: 6px 6px 0;
+  width: 260px;
+}
+
+.attr {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.attr h4 {
+  background-color: #f0f2f5;
+  border-radius: 10px 0 0 10px;
+  color: #3d495c;
+  font-size: 16px;
+  margin: 5px 0 5px 5px;
+  padding: 5px 10px 3px;
+  text-align: left;
+  width: 100%;
+}
+
+.attr span {
+  background-color: black;
+  border-radius: 0 10px 10px 0;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 5px 5px 5px 0;
+  padding: 5px 10px 3px;
+  text-align: center;
+  width: 50px;
+}
+
+.details h5 {
+  display: none;
+}
+
+.details > h4 {
+  color: black;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.silver .middle-bound {
+  background-color: silver;
+  border: 15px solid silver;
+}
+
+.silver .inner-bound h3 {
+  background-color: silver;
+}
+
+.silver .img-bound {
+  background-color: silver;
+}
+
+.silver .details {
+  background-color: silver;
+}
+
+.gold .middle-bound {
+  background-color: gold;
+  border: 15px solid gold;
+}
+
+.gold .inner-bound h3 {
+  background-color: gold;
+}
+
+.gold .img-bound {
+  background-color: gold;
+}
+
+.gold .details {
+  background-color: gold;
+}

@@ -1,0 +1,41 @@
+.new-card {
+  display: flex;
+  height: 100%;
+}
+
+.card-add, .card-preview {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50vw;
+}
+
+.card-add {
+  background-color: #fafafa;
+  border-bottom: 5px solid indigo;
+}
+
+.card-preview {
+  background-color: indigo;
+  color: white;
+  padding-bottom: 50px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-top: 50px;
+}
+
+.card-add h2 {
+  margin-bottom: 25px;
+}
+
+.card-preview h2 {
+  margin-bottom: 70px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}

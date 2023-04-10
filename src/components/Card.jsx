@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Attr from './Attr';
+import '../style/Card.css';
 
 class Card extends React.Component {
   render() {
@@ -15,20 +17,29 @@ class Card extends React.Component {
     } = this.props;
 
     return (
-      <div data-testid="name-card">
-        <p>{ cardName }</p>
-        <img
-          className="img-size"
-          src={ cardImage }
-          alt={ cardName }
-          data-testid="image-card"
-        />
-        <p data-testid="description-card">{ cardDescription }</p>
-        <p data-testid="attr1-card">{ cardAttr1 }</p>
-        <p data-testid="attr2-card">{ cardAttr2 }</p>
-        <p data-testid="attr3-card">{ cardAttr3 }</p>
-        <p data-testid="rare-card">{ cardRare }</p>
-        { cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : ''}
+      <div
+        className={ `outer-bound ${cardRare === 'raro' && 'silver'}
+      ${cardRare === 'muito raro' && 'gold'}` }
+      >
+        <div data-testid="name-card" className="middle-bound">
+          <div className="inner-bound">
+            <h3 data-testid="name-card">{cardName}</h3>
+            <img
+              className="img-bound"
+              src={ cardImage }
+              alt={ cardName }
+              data-testid="image-card"
+            />
+            <p data-testid="description-card">{ cardDescription }</p>
+            <div className="details">
+              <Attr attrName="ATK" attrId="attr1" attrValue={ cardAttr1 } />
+              <Attr attrName="AGI" attrId="attr2" attrValue={ cardAttr2 } />
+              <Attr attrName="INT" attrId="attr3" attrValue={ cardAttr3 } />
+              <h5 data-testid="rare-card">{ cardRare }</h5>
+              { cardTrunfo ? <h4 data-testid="trunfo-card">Super Trunfo</h4> : ''}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
