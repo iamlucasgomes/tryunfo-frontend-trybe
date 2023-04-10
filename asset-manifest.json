@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/tryunfo-frontend-trybe/static/css/main.dba6ef7a.css",
+    "main.js": "/tryunfo-frontend-trybe/static/js/main.0ea2bb48.js",
+    "static/media/VanemNonCommercial.ttf": "/tryunfo-frontend-trybe/static/media/VanemNonCommercial.80bd8a2462119cae2eed.ttf",
+    "index.html": "/tryunfo-frontend-trybe/index.html",
+    "main.dba6ef7a.css.map": "/tryunfo-frontend-trybe/static/css/main.dba6ef7a.css.map",
+    "main.0ea2bb48.js.map": "/tryunfo-frontend-trybe/static/js/main.0ea2bb48.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dba6ef7a.css",
+    "static/js/main.0ea2bb48.js"
+  ]
+}
